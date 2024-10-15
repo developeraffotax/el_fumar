@@ -141,6 +141,39 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
+
+
+
+      <div className="container my-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <div className="card text-center shadow-sm border-light hover-effect">
+            <div className="card-body">
+              <h5 className="card-title text-primary">Our Address</h5>
+              <div className="mt-3">
+                
+                <p>46a Wilford Crescent East, 46a Wilford Crescent East, Nottingham, England, NG2 2ED</p>
+                
+              </div>
+
+
+              <div className="mt-3">
+
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2404.5060702756914!2d-1.1466429229508168!3d52.93931650510006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879c3cc13466e1d%3A0x895e3ead015d9b21!2s46a%20Wilford%20Cres%20E%2C%20Nottingham%20NG2%202ED%2C%20UK!5e0!3m2!1sen!2s!4v1729001325944!5m2!1sen!2s" width="600" height="300" style={{border:0}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
       <Footer />
     </>
   );
