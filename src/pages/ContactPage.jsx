@@ -144,6 +144,25 @@ const ContactPage = () => {
 
 
 
+
+      <div className="container my-4">
+      
+      <div className="text-center">
+        <p>If you have any questions or inquiries, feel free to reach out!</p>
+        <a href="mailto:info@elfumarsltd.co.uk" className="btn btn-primary">
+          Email Us
+        </a>
+      </div>
+      <div className="text-center mt-4">
+        <p>Email: <a href="mailto:info@elfumarsltd.co.uk">info@elfumarsltd.co.uk</a></p>
+      </div>
+    </div>
+
+
+
+
+
+
       <div className="container my-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
@@ -155,6 +174,12 @@ const ContactPage = () => {
                 <p>46a Wilford Crescent East, 46a Wilford Crescent East, Nottingham, England, NG2 2ED</p>
                 
               </div>
+
+              
+
+              
+
+              
 
 
               <div className="mt-3">
