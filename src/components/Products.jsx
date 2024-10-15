@@ -7,6 +7,11 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import { PRODUCTSDATA } from "../data";
+
+
+
+
 
 const Products = () => {
   const [data, setData] = useState([]);
@@ -21,21 +26,28 @@ const Products = () => {
   };
 
   useEffect(() => {
-    const getProducts = async () => {
-      setLoading(true);
-      const response = await fetch("https://fakestoreapi.com/products/");
-      if (componentMounted) {
-        setData(await response.clone().json());
-        setFilter(await response.json());
-        setLoading(false);
-      }
+    
+    // const getProducts = async () => {
 
-      return () => {
-        componentMounted = false;
-      };
-    };
+    //   setLoading(true);
+    //   const response = await fetch("https://fakestoreapi.com/products/");
 
-    getProducts();
+    //   if (componentMounted) {
+    //     setData(await response.clone().json());
+    //     setFilter(await response.json());
+    //     setLoading(false);
+
+    //   }
+
+    //   return () => {
+    //     componentMounted = false;
+    //   };
+    // };
+
+    // getProducts();
+
+    setData(PRODUCTSDATA)
+    
   }, []);
 
   const Loading = () => {
@@ -66,15 +78,15 @@ const Products = () => {
     );
   };
 
-  const filterProduct = (cat) => {
-    const updatedList = data.filter((item) => item.category === cat);
-    setFilter(updatedList);
-  };
+  // const filterProduct = (cat) => {
+  //   const updatedList = data.filter((item) => item.category === cat);
+  //   setFilter(updatedList);
+  // };
 
   const ShowProducts = () => {
     return (
       <>
-        <div className="buttons text-center py-5">
+        {/* <div className="buttons text-center py-5">
           <button
             className="btn btn-outline-dark btn-sm m-2"
             onClick={() => setFilter(data)}
@@ -105,9 +117,9 @@ const Products = () => {
           >
             Electronics
           </button>
-        </div>
+        </div> */}
 
-        {filter.map((product) => {
+        {data.map((product) => {
           return (
             <div
               id={product.id}
@@ -123,7 +135,7 @@ const Products = () => {
                 />
                 <div className="card-body">
                   <h5 className="card-title">
-                    {product.title.substring(0, 12)}...
+                    {product.title.substring(0, 40)}...
                   </h5>
                   <p className="card-text">
                     {product.description.substring(0, 90)}...

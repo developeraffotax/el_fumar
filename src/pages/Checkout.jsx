@@ -2,6 +2,7 @@ import React from "react";
 import { Footer, Navbar } from "../components";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { COUNTRIES } from "../data";
 const Checkout = () => {
   const state = useSelector((state) => state.handleCart);
 
@@ -154,14 +155,18 @@ const Checkout = () => {
                         <br />
                         <select className="form-select" id="country" required>
                           <option value="">Choose...</option>
-                          <option>India</option>
+                          {
+                            COUNTRIES.map((el, index) => {
+                              return <option key={el + index} value={el}>{el}</option>
+                            })
+                          }
                         </select>
                         <div className="invalid-feedback">
                           Please select a valid country.
                         </div>
                       </div>
 
-                      <div className="col-md-4 my-1">
+                      {/* <div className="col-md-4 my-1">
                         <label for="state" className="form-label">
                           State
                         </label>
@@ -173,7 +178,7 @@ const Checkout = () => {
                         <div className="invalid-feedback">
                           Please provide a valid state.
                         </div>
-                      </div>
+                      </div> */}
 
                       <div className="col-md-3 my-1">
                         <label for="zip" className="form-label">

@@ -1,6 +1,90 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Footer, Navbar } from "../components";
+
+import emailjs from '@emailjs/browser';
+
+
+
 const ContactPage = () => {
+
+
+  const [success, setSuccess] = useState('')
+  const [error, setError] = useState('')
+
+
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    
+    const formData = new FormData(form.current);
+    
+    
+    const name = formData.get('from_name')
+    const email = formData.get('from_email')
+    const message = formData.get('message')
+    
+
+    if (!name || !email || !message) {
+      setError('All fields are required!');
+      return;
+    }
+
+    emailjs
+      .sendForm('service_txh90rd', 'template_4uy1a6v', form.current, {
+        publicKey: 'yvwxfMx8RiGY7BTwW',
+      })
+      .then(
+        () => {
+          form.current.reset()
+          console.log('SUCCESS!');
+          setSuccess(`Message send successfully! We'll get back to you soon!`);
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <>
       <Navbar />
@@ -9,13 +93,14 @@ const ContactPage = () => {
         <hr />
         <div class="row my-4 h-100">
           <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
-            <form>
+          <form ref={form} onSubmit={sendEmail}>
               <div class="form my-3">
-                <label for="Name">Name</label>
+                <label for="from_name">Name</label>
                 <input
-                  type="email"
+                  type="text"
                   class="form-control"
-                  id="Name"
+                  id="from_name"
+                  name="from_name"
                   placeholder="Enter your name"
                 />
               </div>
@@ -24,29 +109,35 @@ const ContactPage = () => {
                 <input
                   type="email"
                   class="form-control"
-                  id="Email"
+                   id="from_email"
+                  name="from_email"
                   placeholder="name@example.com"
                 />
               </div>
               <div class="form  my-3">
-                <label for="Password">Message</label>
+                <label for="message">Message</label>
                 <textarea
                   rows={5}
                   class="form-control"
-                  id="Password"
+                  id="message"
+                  name="message"
                   placeholder="Enter your message"
                 />
               </div>
               <div className="text-center">
-                <button
-                  class="my-2 px-4 mx-auto btn btn-dark"
-                  type="submit"
-                  disabled
-                >
-                  Send
-                </button>
+                <button class="my-2 px-4 mx-auto btn btn-dark" type="submit" > Send </button>
               </div>
             </form>
+
+            {
+              success && (<p className="text-success">{success}</p>)
+              
+            }
+
+
+            {
+              error && (<p className="text-danger">{error}</p>)
+            }
           </div>
         </div>
       </div>
